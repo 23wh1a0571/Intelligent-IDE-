@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to IDE</title>
+    <style>
+        /* Reset some default styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Set the background image for the page */
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('background.png'); /* Replace with your image file */
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* The container for the whole page */
+        .container {
+            display: flex;
+            width: 85%;
+            height: 75%;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        /* The side navigation */
+        .side-nav {
+            width: 250px;
+            padding: 25px;
+            background-color: rgba(20, 20, 20, 0.9);
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .side-nav h2 {
+            color: #00C6FF;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .side-nav ul {
+            list-style-type: none;
+        }
+
+        .side-nav ul li {
+            margin-bottom: 15px;
+        }
+
+        .side-nav ul li a {
+            text-decoration: none;
+            color: #00C6FF;
+            font-size: 18px;
+            display: block;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 6px;
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        .side-nav ul li a:hover {
+            background: #00C6FF;
+            color: black;
+            transform: scale(1.05);
+        }
+
+        /* The main content section */
+        .main-content {
+            flex-grow: 1;
+            text-align: center;
+            padding-left: 40px;
+        }
+
+        .main-content .text {
+            max-width: 600px;
+            margin: 0 auto;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .main-content h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: #00C6FF;
+        }
+
+        .main-content p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Button styles */
+        .main-content .btn {
+            text-decoration: none;
+            background: linear-gradient(135deg, #00C6FF, #0072FF);
+            padding: 15px 30px;
+            font-size: 18px;
+            color: white;
+            border-radius: 8px;
+            display: inline-block;
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        .main-content .btn:hover {
+            background: linear-gradient(135deg, #0072FF, #0052D4);
+            transform: scale(1.08);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Side Navigation -->
+        <div class="side-nav">
+            <h2>Navigation</h2>
+            <ul>
+                <li><a href="auto_code.html">Auto Code Generation</a></li>
+                <li><a href="debug.html">Debugging</a></li>
+            </ul>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="text">
+                <h1>Welcome to the IDE</h1>
+                <p>Your one-stop solution for all programming needs.</p>
+                <a href="auto_code.html" class="btn">Start Auto Code Generation</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

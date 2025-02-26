@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto Code Generation</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Body Styling */
+        body {
+            background: linear-gradient(135deg, #1E3C72, #2A5298);
+            color: #fff;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* Header Styling */
+        header {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px;
+            backdrop-filter: blur(5px);
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 600px;
+            background: rgba(255, 255, 255, 0.15);
+            margin: 20px auto;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        /* Select & Input Styling */
+        select, textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border: none;
+            font-size: 16px;
+            background: rgba(255, 255, 255, 0.3);
+            color: #fff;
+            outline: none;
+        }
+
+        select option {
+            background: #1E3C72;
+            color: #fff;
+        }
+
+        /* Button Styling */
+        .button {
+            width: 100%;
+            padding: 15px;
+            font-size: 16px;
+            color: #fff;
+            background: linear-gradient(135deg, #ff7eb3, #ff758c);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            font-weight: bold;
+        }
+
+        .button:hover {
+            background: linear-gradient(135deg, #ff758c, #ff7eb3);
+            transform: scale(1.05);
+        }
+
+        /* Output Box */
+        .output {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            height: 200px;
+            overflow-y: auto;
+            font-size: 16px;
+            font-family: monospace;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Auto Code Generation</h1>
+        <p>Generate code snippets for common tasks</p>
+    </header>
+
+    <div class="container">
+        <h2>Choose a Language and Task</h2>
+
+        <!-- Language Selection -->
+        <label for="language">Select Language:</label>
+        <select id="language">
+            <option value="python">Python</option>
+            <option value="javascript">JavaScript</option>
+            <option value="cpp">C++</option>
+        </select>
+
+        <!-- Task Selection -->
+        <label for="task">Select Task:</label>
+        <select id="task">
+            <option value="hello world">Hello World</option>
+            <option value="fibonacci">Fibonacci</option>
+            <option value="sum of list">Sum of List</option>
+            <option value="check prime">Check Prime</option>
+        </select>
+
+        <!-- Generate Button -->
+        <button class="button" onclick="generateCode()">Generate Code</button>
+
+        <!-- Output Box -->
+        <div class="output">
+            <h3>Generated Code:</h3>
+            <pre id="generatedCode"></pre>
+        </div>
+    </div>
+
+    <script>
+        function generateCode() {
+            var language = document.getElementById("language").value;
+            var task = document.getElementById("task").value;
+            var codeOutput = "";
+
+            if (language === "python") {
+                codeOutput = generatePythonCode(task);
+            } else if (language === "javascript") {
+                codeOutput = generateJavascriptCode(task);
+            } else if (language === "cpp") {
+                codeOutput = generateCppCode(task);
+            }
+
+            document.getElementById("generatedCode").textContent = codeOutput;
+        }
+
+        function generatePythonCode(task) {
+            if (task === "hello world") {
+                return "print('Hello, World!')";
+            } else if (task === "fibonacci") {
+                return "def fibonacci(n):\n    a, b = 0, 1\n    for _ in range(n):\n        a, b = b, a + b\n    return a";
+            } else if (task === "sum of list") {
+                return "def sum_list(lst):\n    return sum(lst)";
+            } else if (task === "check prime") {
+                return "def is_prime(n):\n    if n <= 1:\n        return False\n    for i in range(2, int(n**0.5) + 1):\n        if n % i == 0:\n            return False\n    return True";
+            }
+            return "Task not recognized.";
+        }
+
+        function generateJavascriptCode(task) {
+            if (task === "hello world") {
+                return "console.log('Hello, World!');";
+            } else if (task === "fibonacci") {
+                return "function fibonacci(n) {\n    let a = 0, b = 1;\n    for (let i = 0; i < n; i++) {\n        [a, b] = [b, a + b];\n    }\n    return a;\n}";
+            } else if (task === "sum of list") {
+                return "function sumList(arr) {\n    return arr.reduce((acc, num) => acc + num, 0);\n}";
+            } else if (task === "check prime") {
+                return "function isPrime(n) {\n    if (n <= 1) return false;\n    for (let i = 2; i <= Math.sqrt(n); i++) {\n        if (n % i === 0) return false;\n    }\n    return true;\n}";
+            }
+            return "Task not recognized.";
+        }
+
+        function generateCppCode(task) {
+            if (task === "hello world") {
+                return '#include <iostream>\n\nint main() {\n    std::cout << "Hello, World!";\n    return 0;\n}';
+            } else if (task === "fibonacci") {
+                return 'int fibonacci(int n) {\n    int a = 0, b = 1;\n    for (int i = 0; i < n; i++) {\n        int temp = a;\n        a = b;\n        b = temp + b;\n    }\n    return a;\n}';
+            } else if (task === "sum of list") {
+                return 'int sumList(int arr[], int size) {\n    int sum = 0;\n    for (int i = 0; i < size; i++) {\n        sum += arr[i];\n    }\n    return sum;\n}';
+            } else if (task === "check prime") {
+                return 'bool isPrime(int n) {\n    if (n <= 1) return false;\n    for (int i = 2; i * i <= n; i++) {\n        if (n % i == 0) return false;\n    }\n    return true;\n}';
+            }
+            return "Task not recognized.";
+        }
+    </script>
+
+</body>
+</html>
